@@ -117,7 +117,8 @@ class Dolphin:
 
     """Run dolphin-emu"""
     def run(self, render=True, iso_path=None, movie_path=None):
-        command = ["dolphin-emu"]
+        home_path = pwd.getpwuid(os.getuid()).pw_dir
+        command = [home_path+"/Applications/Dolphin.app/Contents/MacOS/Dolphin","-u",home_path+"/Library/Application Support/Dolphin"]
         if not render:
             #Use the "Null" renderer
             command.append("-v")
